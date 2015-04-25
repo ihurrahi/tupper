@@ -62,8 +62,9 @@ def process_value(k, height, width):
 
 def main(argv=sys.argv):
   p = argparse.ArgumentParser()
-  p.add_argument('--image', help='Image file to extract the k-value from')
-  p.add_argument('--value', help='k-value to plot')
+  group = p.add_mutually_exclusive_group(required=True)
+  group.add_argument('--image', help='Image file to extract the k-value from')
+  group.add_argument('--value', help='k-value to plot')
   p.add_argument('--height', default=17, type=int, help='adjustable height of resulting image')
   cfg = p.parse_args(argv[1:])
 
